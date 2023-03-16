@@ -27,4 +27,8 @@ func errPattern2() {
 	if _,err := ResErrAndStr("test"); err != nil {
 		fmt.Printf("%v",err)
 	}
+
+	if a,err := ResErrAndStr("test"); err != nil {
+		fmt.Printf("%v",err)
+	}
 }

@@ -37,3 +37,10 @@ func okPattern3() {
 		fmt.Printf("%v",err)
 	}
 }
+
+func errPattern2() {
+	_,err := ResErrAndStr("test")
+	if err != nil {
+		fmt.Printf("%v",err)
+	}
+}
