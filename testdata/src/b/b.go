@@ -18,7 +18,7 @@ func errPattern1() {
 
 func okPattern1() {
 	err := ResErr("test")
-	if err != nil { //want "Separated notation"
+	if err != nil { //want "separated notation"
 		fmt.Printf("%v",err)
 	}
 }

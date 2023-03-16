@@ -65,7 +65,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 						}
 					} else {
 						if SeparatedCnt < abbreviatedCnt {
-							pass.Reportf(n.Pos(), "Separated notation")
+							pass.Reportf(n.Pos(), "separated notation")
 						}
 					}
 				}
