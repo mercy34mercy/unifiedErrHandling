@@ -11,6 +11,11 @@ import (
 
 const doc = "test is ..."
 
+var (
+	abbreviatedCnt = 0
+	SeparatedCnt   = 0
+)
+
 // Analyzer is ...
 var Analyzer = &analysis.Analyzer{
 	Name: "test",
@@ -37,9 +42,31 @@ func run(pass *analysis.Pass) (interface{}, error) {
 
 				if isErrVar(pass.TypesInfo, lhs) && isNil(rhs) {
 					if n.Init != nil {
-						pass.Reportf(n.Pos(), "use 1")
+						abbreviatedCnt++
 					} else {
-						pass.Reportf(n.Pos(), "use 2")
+						SeparatedCnt++
+					}
+				}
+			}
+		}
+	})
+
+	inspect.Preorder(nodeFilter, func(n ast.Node) {
+		switch n := n.(type) {
+		case *ast.IfStmt:
+			if _, ok := n.Cond.(*ast.BinaryExpr); ok {
+				lhs := n.Cond.(*ast.BinaryExpr).X
+				rhs := n.Cond.(*ast.BinaryExpr).Y
+
+				if isErrVar(pass.TypesInfo, lhs) && isNil(rhs) {
+					if n.Init != nil {
+						if abbreviatedCnt < SeparatedCnt {
+							pass.Reportf(n.Pos(), "abbreviated notation")
+						}
+					} else {
+						if SeparatedCnt < abbreviatedCnt {
+							pass.Reportf(n.Pos(), "Separated notation")
+						}
 					}
 				}
 			}
