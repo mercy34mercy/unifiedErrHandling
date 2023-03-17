@@ -1,5 +1,7 @@
 # Unified Err Handling
 Unify error handling methods
+This was created during an internship at Knowledge Work
+
 ## example
 ```go
 package example
