@@ -14,7 +14,6 @@ import (
 // 	analysistest.Run(t, testdata, unifiedErrHandling.Analyzer, "a")
 // }
 
-
 func TestAnalyzer2(t *testing.T) {
 	testdata := testutil.WithModules(t, analysistest.TestData(), nil)
 	analysistest.Run(t, testdata, unifiedErrHandling.Analyzer, "b")
