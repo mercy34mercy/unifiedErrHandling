@@ -1,4 +1,8 @@
-package b
+# Unified Err Handling
+Unify error handling methods
+## example
+```go
+package example
 
 import "fmt"
 
@@ -24,3 +28,14 @@ func minorityPattern1() {
 		fmt.Printf("%v",err)
 	}
 }
+```
+
+# install
+```sh
+go install github.com/mercy34mercy/unifiedErrHandling/cmd/unifiedErrHandling@latest
+```
+
+## Useage
+```sh
+go vet -vettool=`which unifiedErrHandling` pkgname
+```
