@@ -104,7 +104,7 @@ func isErrVar(info *types.Info, expr ast.Expr) bool {
 
 //その値がnilかどうか確かめる
 func isNil(expr ast.Expr) bool {
-	//処理としては、errror型の時と似ているが、
+	//処理としては、errror型の時と似ているが、indent.Objとの比較だけで行けているのかは少し不安。
 	if ident, ok := expr.(*ast.Ident); ok && ident.Obj == nil {
 		return true
 	}
